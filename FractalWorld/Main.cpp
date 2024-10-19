@@ -1,5 +1,9 @@
 #include <cstdlib>
 #include <iostream>
+#include <limits>
+#include <string>
+
+#define NOMINMAX
 #include <Windows.h>
 
 void main_menu();
@@ -15,17 +19,27 @@ int main(int argc, char** argv)
 
 void main_menu()
 {
-	bool running{ true };
-	while (running)
+	while (true)
 	{
 		clear_screen();
 		print_main_menu();
+
+		std::string input{};
+		if (!std::getline(std::cin >> std::ws, input))
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
+
+		std::cout << input << "\n";
+
 		int choice{ 0 };
 		std::cin >> choice;
 		if (choice == 5)
 		{
-			running = false;
 			std::cout << "Thank you for playing!\n";
+			break;
 		}
 		else
 		{
