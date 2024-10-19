@@ -6,8 +6,6 @@ void main_menu();
 void print_main_menu();
 int clear_screen();
 
-DWORD originalMode{ 0 };
-
 int main(int argc, char** argv)
 {
 	main_menu();
