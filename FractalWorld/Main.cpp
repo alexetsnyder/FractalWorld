@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <limits>
@@ -32,18 +33,11 @@ void main_menu()
 			continue;
 		}
 
-		std::cout << input << "\n";
-
-		int choice{ 0 };
-		std::cin >> choice;
-		if (choice == 5)
+		std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::tolower(c); });
+		if (input == "exit")
 		{
 			std::cout << "Thank you for playing!\n";
 			break;
-		}
-		else
-		{
-			std::cout << "NO!\n";
 		}
 	}
 }
