@@ -1,3 +1,6 @@
+#include "MapChunk.h"
+#include "MapItem.h"
+
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -18,7 +21,8 @@ void load_game();
 void settings();
 void credits();
 void print_back_prompt();
-int clear_screen();
+void clear_screen();
+int system_clear_screen();
 
 std::unordered_map<std::string, void(*)()> commands
 {
@@ -28,6 +32,15 @@ std::unordered_map<std::string, void(*)()> commands
 	{ "settings", &settings },
 	{ "credits", &credits },
 };
+
+std::vector<Monolith::MapItem> map_items
+{
+	Monolith::MapItem{ "Haunted House", "An old cabin lying broken upon the earth.", "", false },
+	Monolith::MapItem{ "Tree", "Rough bark leads upward to thick branches; a rope hangs from a branch carrying a tire swing swinging softly in the breeze.", "", false },
+	Monolith::MapItem{ "Stars", "The vaulted heavens cold and distant.", "", true },
+};
+
+Monolith::MapChunk map{ "Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items};
 
 int main(int argc, char** argv)
 {
@@ -40,10 +53,7 @@ void main_menu()
 {
 	while (true)
 	{
-		if (clear_screen_flag)
-		{
-			clear_screen();
-		}
+		clear_screen();
 		print_main_menu();
 
 		std::string input{};
@@ -80,13 +90,16 @@ void print_main_menu()
 
 void new_game()
 {
-	std::cout << "You are on a path in the woods. You are walking towards an unknown destination.\n"; 
-	std::cout << "The hoary faces of ancient trees watch your progress: silent judges of what's to come.\n";
+	clear_screen();
+	//std::cout << "You are on a path in the woods. You are walking towards an unknown destination.\n"; 
+	//std::cout << "The hoary faces of ancient trees watch your progress: silent judges of what's to come.\n";
+	std::cout << map << "\n";
 	print_back_prompt();
 }
 
 void load_game()
 {
+	clear_screen();
 	std::cout << "Saves:\n";
 	std::cout << "1. Brave New World.\n";
 	std::cout << "2. Fake Save 2.\n";
@@ -96,6 +109,7 @@ void load_game()
 
 void settings()
 {
+	clear_screen();
 	std::cout << "Settings:\n";
 	std::cout << "Clear Screen: " << std::boolalpha << clear_screen_flag << "\n";
 	print_back_prompt();
@@ -103,6 +117,7 @@ void settings()
 
 void credits()
 {
+	clear_screen();
 	std::cout << "Credits:\n";
 	std::cout << "Autumn Snyder\n";
 	print_back_prompt();
@@ -114,8 +129,16 @@ void print_back_prompt()
 	std::cin.ignore();
 }
 
+void clear_screen()
+{
+	if (clear_screen_flag)
+	{
+		system_clear_screen();
+	}
+}
+
 //From: https://learn.microsoft.com/en-us/windows/console/clearing-the-screen
-int clear_screen()
+int system_clear_screen()
 {
 	HANDLE hConsole{ GetStdHandle(STD_OUTPUT_HANDLE) };
 
