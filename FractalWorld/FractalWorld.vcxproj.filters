@@ -24,12 +24,21 @@
     <ClCompile Include="MapItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="System\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapChunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions\ConsoleException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

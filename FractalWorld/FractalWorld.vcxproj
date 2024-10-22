@@ -131,11 +131,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="System\Console.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapChunk.cpp" />
     <ClCompile Include="MapItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Exceptions\ConsoleException.h" />
+    <ClInclude Include="System\Console.h" />
     <ClInclude Include="MapChunk.h" />
     <ClInclude Include="MapItem.h" />
   </ItemGroup>
