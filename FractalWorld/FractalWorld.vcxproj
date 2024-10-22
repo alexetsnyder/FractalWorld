@@ -133,14 +133,14 @@
   <ItemGroup>
     <ClCompile Include="System\Console.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MapChunk.cpp" />
-    <ClCompile Include="MapItem.cpp" />
+    <ClCompile Include="Monolith\MapChunk.cpp" />
+    <ClCompile Include="Monolith\MapItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exceptions\ConsoleException.h" />
     <ClInclude Include="System\Console.h" />
-    <ClInclude Include="MapChunk.h" />
-    <ClInclude Include="MapItem.h" />
+    <ClInclude Include="Monolith\MapChunk.h" />
+    <ClInclude Include="Monolith\MapItem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

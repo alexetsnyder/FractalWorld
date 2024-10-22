@@ -1,7 +1,7 @@
-#include "Exceptions/ConsoleException.h"
-#include "MapChunk.h"
-#include "MapItem.h"
-#include "System/Console.h"
+#include "Monolith/Exceptions/ConsoleException.h"
+#include "Monolith/Map/MapChunk.h"
+#include "Monolith/Map/MapItem.h"
+#include "Monolith/System/Console.h"
 
 #include <algorithm>
 #include <cstdlib>
