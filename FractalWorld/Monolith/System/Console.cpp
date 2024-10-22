@@ -1,6 +1,6 @@
 #include "Console.h"
 
-#include "Exceptions/ConsoleException.h"
+#include "Monolith/Exceptions/ConsoleException.h"
 
 namespace Monolith
 {

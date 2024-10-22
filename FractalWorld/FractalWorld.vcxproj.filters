@@ -18,27 +18,33 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monolith\MapChunk.cpp">
+    <ClCompile Include="Monolith\Map\MapChunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monolith\MapItem.cpp">
+    <ClCompile Include="Monolith\Map\MapItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="System\Console.cpp">
+    <ClCompile Include="Monolith\System\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Monolith\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Monolith\MapChunk.h">
+    <ClInclude Include="Monolith\Map\MapChunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Monolith\MapItem.h">
+    <ClInclude Include="Monolith\Map\MapItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="System\Console.h">
+    <ClInclude Include="Monolith\System\Console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Exceptions\ConsoleException.h">
+    <ClInclude Include="Monolith\Exceptions\ConsoleException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monolith\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
