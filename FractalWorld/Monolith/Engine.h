@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Enums/State.h"
 #include "Map/MapChunk.h"
 #include "System/Console.h"
 
@@ -18,14 +19,18 @@ namespace Monolith
 
 		private:
 			void main_menu();
+			void print_main_menu();
+			std::string getInput();
+			void game_loop();
 			void new_game();
 			void load_game();
 			void settings();
 			void credits();
-			void exit_msg();
+			void exit_game();
 			void print_prompt();
 			void clear_screen();
 
+			GameState state_;
 			std::unordered_map<std::string, void (Engine::*)()> commands_;
 			bool clear_screen_flag_;
 			Console console_;

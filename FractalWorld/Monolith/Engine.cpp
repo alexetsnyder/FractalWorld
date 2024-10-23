@@ -15,12 +15,12 @@ namespace Monolith
 	};
 
 	Engine::Engine(bool clear_screen_flag)
-		: clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, 
+		: state_{ GameState::MAIN_MENU }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, 
 		  map_{ "Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
 	{
 		commands_.insert(
 		{ 
-			{ "exit", &Engine::exit_msg },
+			{ "exit", &Engine::exit_game },
 			{ "new", &Engine::new_game },
 			{ "load", &Engine::load_game },
 			{ "settings", &Engine::settings },
@@ -35,34 +35,37 @@ namespace Monolith
 
 	void Engine::run()
 	{
-		while (true)
+		while (state_ != GameState::EXIT)
 		{
-			clear_screen();
-			main_menu();
-
-			std::string input{};
-			if (!std::getline(std::cin >> std::ws, input))
+			switch (state_)
 			{
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				continue;
-			}
-
-			std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::tolower(c); });
-
-			if (commands_.count(input) == 1)
-			{
-				(this->*(commands_.at(input)))();
-			}
-
-			if (input == "exit")
-			{
-				break;
+				case GameState::MAIN_MENU:
+					main_menu();
+					break;
+				case GameState::PLAYING:
+					game_loop();
+					break;
+				default:
+					std::cout << "Main Menu default switch branch.\n";
+					break;
 			}
 		}
 	}
 
 	void Engine::main_menu()
+	{
+		clear_screen();
+		print_main_menu();
+
+		std::string input{ getInput() };
+
+		if (input != "" && commands_.count(input) == 1)
+		{
+			(this->*(commands_.at(input)))();
+		}
+	}
+
+	void Engine::print_main_menu()
 	{
 		std::cout << "Main Menu:\n";
 		std::cout << "1. New Game\n";
@@ -70,6 +73,26 @@ namespace Monolith
 		std::cout << "3. Settings\n";
 		std::cout << "4. Credits\n";
 		std::cout << "5. Exit\n";
+	}
+
+	std::string Engine::getInput()
+	{
+		std::string input{};
+		if (!std::getline(std::cin >> std::ws, input))
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			return "";
+		}
+
+		std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::tolower(c); });
+
+		return input;
+	}
+
+	void Engine::game_loop()
+	{
+
 	}
 
 	void Engine::new_game()
@@ -107,9 +130,10 @@ namespace Monolith
 		print_prompt();
 	}
 
-	void Engine::exit_msg()
+	void Engine::exit_game()
 	{
 		std::cout << "Thank you for playing!\n";
+		state_ = GameState::EXIT;
 	}
 
 	void Engine::print_prompt()
