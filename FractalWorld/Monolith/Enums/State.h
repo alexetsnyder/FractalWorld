@@ -4,8 +4,7 @@ namespace Monolith
 {
 	enum class GameState
 	{
-		MAIN_MENU,
-		PLAYING,
+		RUNNING,
 		EXIT,
 	};
 }

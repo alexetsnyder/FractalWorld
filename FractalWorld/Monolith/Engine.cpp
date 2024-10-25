@@ -1,22 +1,21 @@
 #include "Engine.h"
-#include "Map/MapItem.h"
+#include "Map/MapChunk.h"
 
 #include <algorithm>
 #include <iostream>
-#include <vector>
 
 namespace Monolith
 {
-	std::vector<Monolith::MapItem> map_items
+	/*std::vector<Monolith::MapItem> map_items
 	{
 		Monolith::MapItem{ "Haunted House", "An old cabin lying broken upon the earth.", "", false },
 		Monolith::MapItem{ "Tree", "Rough bark leads upward to thick branches; a rope hangs from a branch carrying a tire swing swinging softly in the breeze.", "", false },
 		Monolith::MapItem{ "Stars", "The vaulted heavens cold and distant.", "", true },
-	};
+	};*/
 
 	Engine::Engine(bool clear_screen_flag)
-		: state_{ GameState::MAIN_MENU }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, 
-		  map_{ "Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
+		: state_{ GameState::RUNNING }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, map_{}
+			//"Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
 	{
 		commands_.insert(
 		{ 
@@ -37,18 +36,7 @@ namespace Monolith
 	{
 		while (state_ != GameState::EXIT)
 		{
-			switch (state_)
-			{
-				case GameState::MAIN_MENU:
-					main_menu();
-					break;
-				case GameState::PLAYING:
-					game_loop();
-					break;
-				default:
-					std::cout << "Main Menu default switch branch.\n";
-					break;
-			}
+			main_menu();
 		}
 	}
 
@@ -92,16 +80,38 @@ namespace Monolith
 
 	void Engine::game_loop()
 	{
+		while (true)
+		{
+			Pair current_pos{ map_.current_pos() };
+			auto chunk{ map_.get_chunk(current_pos.x, current_pos.y) };
+			if (chunk.has_value())
+			{
+				std::cout << chunk.value() << "\n";
+			}
+			else
+			{
+				std::cout << "No map chunk returned.\n";
+			}
 
+			std::cout << "Enter exit and press enter to quit: ";
+
+			std::string input{ getInput() };
+
+			if (input == "exit")
+			{
+				break;
+			}
+		}
 	}
 
 	void Engine::new_game()
 	{
 		clear_screen();
+		game_loop();
 		//std::cout << "You are on a path in the woods. You are walking towards an unknown destination.\n"; 
 		//std::cout << "The hoary faces of ancient trees watch your progress: silent judges of what's to come.\n";
-		std::cout << map_ << "\n";
-		print_prompt();
+		/*std::cout << map_ << "\n";
+		print_prompt();*/
 	}
 
 	void Engine::load_game()

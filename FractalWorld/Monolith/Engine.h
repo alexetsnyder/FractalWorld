@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Enums/State.h"
-#include "Map/MapChunk.h"
+#include "Map/Map.h"
 #include "System/Console.h"
 
 #include <unordered_map>
@@ -34,6 +34,7 @@ namespace Monolith
 			std::unordered_map<std::string, void (Engine::*)()> commands_;
 			bool clear_screen_flag_;
 			Console console_;
-			MapChunk map_;
+			Map map_;
+			//MapChunk map_;
 	};
 }
