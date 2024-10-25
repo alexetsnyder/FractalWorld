@@ -32,6 +32,7 @@ namespace Monolith
 
 			GameState state_;
 			std::unordered_map<std::string, void (Engine::*)()> commands_;
+			std::unordered_map<std::string, bool (Map::*)()> map_commands_;
 			bool clear_screen_flag_;
 			Console console_;
 			Map map_;

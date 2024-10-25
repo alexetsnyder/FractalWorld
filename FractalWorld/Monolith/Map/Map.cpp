@@ -20,6 +20,32 @@ namespace Monolith
 		}
 	}
 
+	const MapChunk& Map::get_current_chunk()
+	{
+		int index = current_pos_.i + current_pos_.j * cols_;
+		return map_chunks_[index];
+	}
+
+	bool Map::move_north()
+	{
+		return move_pos(current_pos_.i - 1, current_pos_.j);
+	}
+
+	bool Map::move_south()
+	{
+		return move_pos(current_pos_.i + 1, current_pos_.j);
+	}
+
+	bool Map::move_east()
+	{
+		return move_pos(current_pos_.i, current_pos_.j + 1);
+	}
+
+	bool Map::move_west()
+	{
+		return move_pos(current_pos_.i, current_pos_.j - 1);
+	}
+
 	std::optional<MapChunk> Map::get_chunk(int i, int j)
 	{
 		if (!out_of_bounds(i, j))
@@ -33,13 +59,13 @@ namespace Monolith
 
 	bool Map::move_pos(int i, int j)
 	{
-		if (current_pos_.x == i && current_pos_.y == j || out_of_bounds(i, j))
+		if (current_pos_.i == i && current_pos_.j == j || out_of_bounds(i, j))
 		{
 			return false;
 		}
 
-		current_pos_.x = i;
-		current_pos_.y = j;
+		current_pos_.i = i;
+		current_pos_.j = j;
 
 		return true;
 	}

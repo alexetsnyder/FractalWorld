@@ -2,6 +2,7 @@
 #include "Map/MapChunk.h"
 
 #include <algorithm>
+#include <format>
 #include <iostream>
 
 namespace Monolith
@@ -14,7 +15,7 @@ namespace Monolith
 	};*/
 
 	Engine::Engine(bool clear_screen_flag)
-		: state_{ GameState::RUNNING }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, map_{}
+		: state_{ GameState::RUNNING }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, map_commands_{}, map_ {}
 			//"Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
 	{
 		commands_.insert(
@@ -24,6 +25,17 @@ namespace Monolith
 			{ "load", &Engine::load_game },
 			{ "settings", &Engine::settings },
 			{ "credits", &Engine::credits },
+		});
+
+		map_commands_.insert({
+			{ "north", &Map::move_north },
+			{ "up", &Map::move_north },
+			{ "south", &Map::move_south },
+			{ "down", &Map::move_south },
+			{ "east", &Map::move_east },
+			{ "right", &Map::move_east },
+			{ "west", &Map::move_west },
+			{ "left", &Map::move_west },
 		});
 	}
 
@@ -82,24 +94,26 @@ namespace Monolith
 	{
 		while (true)
 		{
-			Pair current_pos{ map_.current_pos() };
-			auto chunk{ map_.get_chunk(current_pos.x, current_pos.y) };
-			if (chunk.has_value())
-			{
-				std::cout << chunk.value() << "\n";
-			}
-			else
-			{
-				std::cout << "No map chunk returned.\n";
-			}
+			MapChunk chunk{ map_.get_current_chunk() };
 
-			std::cout << "Enter exit and press enter to quit: ";
+			std::cout << chunk << "\n";
+
+			std::cout << "Type exit and press enter to quit: ";
 
 			std::string input{ getInput() };
 
 			if (input == "exit")
 			{
 				break;
+			}
+
+			if (input != "" && map_commands_.count(input) == 1)
+			{
+				bool success = (map_.*(map_commands_.at(input)))();
+				if (!success)
+				{
+					std::cout << std::format("The glass dome prevents you from going any further {}\n", input); 
+				}
 			}
 		}
 	}
