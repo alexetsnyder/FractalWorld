@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Monolith\CommandParser.cpp" />
     <ClCompile Include="Monolith\Engine.cpp" />
     <ClCompile Include="Monolith\Map\Map.cpp" />
     <ClCompile Include="Monolith\System\Console.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Monolith\Map\MapItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Monolith\CommandParser.h" />
     <ClInclude Include="Monolith\Engine.h" />
     <ClInclude Include="Monolith\Exceptions\ConsoleException.h" />
     <ClInclude Include="Monolith\Map\Map.h" />

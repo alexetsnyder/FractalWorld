@@ -29,13 +29,12 @@ namespace Monolith
 			void exit_game();
 			void print_prompt();
 			void clear_screen();
+			bool parse_exit(const std::string& input);
 
 			GameState state_;
 			std::unordered_map<std::string, void (Engine::*)()> commands_;
-			std::unordered_map<std::string, bool (Map::*)()> map_commands_;
 			bool clear_screen_flag_;
 			Console console_;
 			Map map_;
-			//MapChunk map_;
 	};
 }
