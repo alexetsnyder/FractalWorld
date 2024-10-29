@@ -1,6 +1,6 @@
 #include "Map.h"
 
-#include "MapItem.h"
+#include "MapObject.h"
 
 #include <format>
 
@@ -13,7 +13,7 @@ namespace Monolith
 		{
 			for (int i = 0; i < rows; i++)
 			{
-				MapItem item{ "knife", "A glittering blade with a jeweled hilt.", "", false };
+				MapObject item{ "knife", "A glittering blade with a jeweled hilt.", "", false };
 				MapChunk chunk{ std::format("Coord {}:{}", i, j), "A Map Coordinate.", std::vector{ item } };
 				map_chunks_.push_back(chunk);
 			}

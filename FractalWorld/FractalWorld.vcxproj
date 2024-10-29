@@ -137,7 +137,7 @@
     <ClCompile Include="Monolith\System\Console.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Monolith\Map\MapChunk.cpp" />
-    <ClCompile Include="Monolith\Map\MapItem.cpp" />
+    <ClCompile Include="Monolith\Map\MapObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Monolith\CommandParser.h" />
@@ -146,7 +146,7 @@
     <ClInclude Include="Monolith\Map\Map.h" />
     <ClInclude Include="Monolith\System\Console.h" />
     <ClInclude Include="Monolith\Map\MapChunk.h" />
-    <ClInclude Include="Monolith\Map\MapItem.h" />
+    <ClInclude Include="Monolith\Map\MapObject.h" />
     <ClInclude Include="Monolith\Enums\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

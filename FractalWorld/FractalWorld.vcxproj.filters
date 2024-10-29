@@ -21,7 +21,7 @@
     <ClCompile Include="Monolith\Map\MapChunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monolith\Map\MapItem.cpp">
+    <ClCompile Include="Monolith\Map\MapObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Monolith\System\Console.cpp">
@@ -41,7 +41,7 @@
     <ClInclude Include="Monolith\Map\MapChunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Monolith\Map\MapItem.h">
+    <ClInclude Include="Monolith\Map\MapObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Monolith\System\Console.h">

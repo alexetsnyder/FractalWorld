@@ -5,14 +5,14 @@
 
 namespace Monolith
 {
-	class MapItem
+	class MapObject
 	{
 		public:
 			static inline int idGenerator{ 0 };
 
-			MapItem();
-			MapItem(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
-			~MapItem();
+			MapObject();
+			MapObject(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
+			~MapObject();
 
 			const int id() const { return id_; }
 			std::string name() { return name_; }
@@ -28,5 +28,5 @@ namespace Monolith
 			bool is_plural_;
 	};
 
-	std::ostream& operator<<(std::ostream& os, MapItem map_item);
+	std::ostream& operator<<(std::ostream& os, MapObject map_item);
 }

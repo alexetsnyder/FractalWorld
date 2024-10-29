@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MapItem.h"
+#include "MapObject.h"
 
 #include <iostream>
 #include <string>
@@ -13,17 +13,17 @@ namespace Monolith
 	{
 		public:
 			MapChunk();
-			MapChunk(const std::string& name, const std::string& description, const std::vector<MapItem>& items);
+			MapChunk(const std::string& name, const std::string& description, const std::vector<MapObject>& items);
 			~MapChunk();
 
 			std::string_view name() { return name_; }
 			std::string_view description() { return description_; }
-			const std::vector<MapItem>& items() { return items_; }
+			const std::vector<MapObject>& items() { return items_; }
 
 		private:
 			std::string name_;
 			std::string description_;
-			std::vector<MapItem> items_;
+			std::vector<MapObject> items_;
 	};
 
 	std::ostream& operator<<(std::ostream& os, MapChunk& map_chunk);
