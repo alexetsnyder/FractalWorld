@@ -13,8 +13,8 @@ namespace Monolith
 		{
 			for (int i = 0; i < rows; i++)
 			{
-				MapObject item{ "knife", "A glittering blade with a jeweled hilt.", "", false };
-				MapChunk chunk{ std::format("Coord {}:{}", i, j), "A Map Coordinate.", std::vector{ item } };
+				MapObject object{ "knife", "A glittering blade with a jeweled hilt.", "", false };
+				MapChunk chunk{ std::format("Coord {}:{}", i, j), "A Map Coordinate.", std::vector{ object } };
 				map_chunks_.push_back(chunk);
 			}
 		}
