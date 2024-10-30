@@ -21,6 +21,8 @@ namespace Monolith
 	{
 		commands_.insert(
 		{ 
+			{ "quit", &Engine::exit_game },
+			{ "q", &Engine::exit_game },
 			{ "exit", &Engine::exit_game },
 			{ "new", &Engine::new_game },
 			{ "load", &Engine::load_game },
