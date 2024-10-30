@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "CommandParser.h"
 #include "Map/MapChunk.h"
+#include "State.h"
 
 #include <algorithm>
 #include <format>
@@ -84,15 +85,24 @@ namespace Monolith
 
 	void Engine::game_loop()
 	{
+		State state{};
 		CommandParser parser{};
 
 		while (true)
 		{
+			clear_screen();
+
+			if (!state.empty())
+			{
+				std::cout << state << "\n";
+				state.clear();
+			}
+
 			MapChunk chunk{ map_.get_current_chunk() };
 
 			std::cout << chunk << "\n";
 
-			std::cout << "Type exit and press enter to quit: ";
+			std::cout << ">>> ";
 
 			std::string input{ getInput() };
 
@@ -103,7 +113,7 @@ namespace Monolith
 
 			if (!parser.execute(input, map_))
 			{
-				std::cout << std::format("The glass dome prevents you from going any further {}\n", input);
+				state.add(std::format("The glass dome prevents you from going any further {}\n", input));
 			}
 		}
 	}

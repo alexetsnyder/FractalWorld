@@ -136,6 +136,7 @@
     <ClCompile Include="Monolith\Map\Item.cpp" />
     <ClCompile Include="Monolith\Map\Map.cpp" />
     <ClCompile Include="Monolith\Map\MapDescriptor.cpp" />
+    <ClCompile Include="Monolith\State.cpp" />
     <ClCompile Include="Monolith\System\Console.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Monolith\Map\MapChunk.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Monolith\Map\Item.h" />
     <ClInclude Include="Monolith\Map\Map.h" />
     <ClInclude Include="Monolith\Map\MapDescriptor.h" />
+    <ClInclude Include="Monolith\State.h" />
     <ClInclude Include="Monolith\System\Console.h" />
     <ClInclude Include="Monolith\Map\MapChunk.h" />
     <ClInclude Include="Monolith\Map\MapObject.h" />
