@@ -10,6 +10,7 @@ namespace Monolith
 			static inline int idGenerator{ 0 };
 
 			MapDescriptor(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
+			virtual ~MapDescriptor() {};
 
 			const int id() const { return id_; }
 			std::string name() { return name_; }
