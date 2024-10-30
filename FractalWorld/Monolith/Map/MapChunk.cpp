@@ -3,13 +3,13 @@
 namespace Monolith
 {
 	MapChunk::MapChunk()
-		: name_{}, description_{}, items_ {}
+		: name_{}, description_{}, objects_ {}
 	{
 
 	}
 
 	MapChunk::MapChunk(const std::string& name, const std::string& description, const std::vector<MapObject>& items)
-		: name_{ name }, description_{ description }, items_{ items }
+		: name_{ name }, description_{ description }, objects_{ items }
 	{
 		
 	}

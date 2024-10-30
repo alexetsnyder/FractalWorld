@@ -36,6 +36,9 @@
     <ClCompile Include="Monolith\CommandParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Monolith\Map\MapDescriptor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Monolith\Map\MapChunk.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Monolith\CommandParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monolith\Map\MapDescriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

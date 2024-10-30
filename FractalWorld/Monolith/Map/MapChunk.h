@@ -18,12 +18,12 @@ namespace Monolith
 
 			std::string_view name() { return name_; }
 			std::string_view description() { return description_; }
-			const std::vector<MapObject>& items() { return items_; }
+			const std::vector<MapObject>& items() { return objects_; }
 
 		private:
 			std::string name_;
 			std::string description_;
-			std::vector<MapObject> items_;
+			std::vector<MapObject> objects_;
 	};
 
 	std::ostream& operator<<(std::ostream& os, MapChunk& map_chunk);

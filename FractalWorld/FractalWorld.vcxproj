@@ -134,6 +134,7 @@
     <ClCompile Include="Monolith\CommandParser.cpp" />
     <ClCompile Include="Monolith\Engine.cpp" />
     <ClCompile Include="Monolith\Map\Map.cpp" />
+    <ClCompile Include="Monolith\Map\MapDescriptor.cpp" />
     <ClCompile Include="Monolith\System\Console.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Monolith\Map\MapChunk.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Monolith\Engine.h" />
     <ClInclude Include="Monolith\Exceptions\ConsoleException.h" />
     <ClInclude Include="Monolith\Map\Map.h" />
+    <ClInclude Include="Monolith\Map\MapDescriptor.h" />
     <ClInclude Include="Monolith\System\Console.h" />
     <ClInclude Include="Monolith\Map\MapChunk.h" />
     <ClInclude Include="Monolith\Map\MapObject.h" />

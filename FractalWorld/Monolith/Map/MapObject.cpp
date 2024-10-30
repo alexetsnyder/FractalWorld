@@ -3,13 +3,13 @@
 namespace Monolith
 {
     MapObject::MapObject()
-        : id_{ idGenerator++ }, name_{ "" }, short_description_{ "" }, long_description_{ "" }, is_plural_{ false }
+        : MapDescriptor{ "", "", "", false }
     {
      
     }
 
     MapObject::MapObject(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural)
-        : id_{ idGenerator++ }, name_{ name }, short_description_{ short_description }, long_description_{ long_description_ }, is_plural_{ is_plural }
+        : MapDescriptor{ name, short_description, long_description, is_plural }
     {
 
     }
