@@ -19,7 +19,7 @@ namespace Monolith
 
 	}
 
-	std::ostream& operator<<(std::ostream& os, MapChunk& map_chunk)
+	std::ostream& operator<<(std::ostream& os, const MapChunk& map_chunk)
 	{
 		os << map_chunk.description() << "\n";
 		os << "In the " << map_chunk.name() << " lies: ";

@@ -16,9 +16,9 @@ namespace Monolith
 			MapChunk(const std::string& name, const std::string& description, const std::vector<MapObject>& items);
 			~MapChunk();
 
-			std::string_view name() { return name_; }
-			std::string_view description() { return description_; }
-			const std::vector<MapObject>& items() { return objects_; }
+			std::string_view name() const { return name_; }
+			std::string_view description() const { return description_; }
+			const std::vector<MapObject>& items() const { return objects_; }
 
 		private:
 			std::string name_;
@@ -26,5 +26,5 @@ namespace Monolith
 			std::vector<MapObject> objects_;
 	};
 
-	std::ostream& operator<<(std::ostream& os, MapChunk& map_chunk);
+	std::ostream& operator<<(std::ostream& os, const MapChunk& map_chunk);
 }

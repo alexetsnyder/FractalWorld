@@ -85,22 +85,14 @@ namespace Monolith
 
 	void Engine::game_loop()
 	{
-		State state{};
+		State state{ map_ };
 		CommandParser parser{};
 
 		while (true)
 		{
 			clear_screen();
 
-			if (!state.empty())
-			{
-				std::cout << state << "\n";
-				state.clear();
-			}
-
-			MapChunk chunk{ map_.get_current_chunk() };
-
-			std::cout << chunk << "\n";
+			std::cout << state << "\n";
 
 			std::cout << ">>> ";
 
@@ -113,7 +105,7 @@ namespace Monolith
 
 			if (!parser.execute(input, map_))
 			{
-				state.add(std::format("The glass dome prevents you from going any further {}\n", input));
+				state.error(std::format("The glass dome prevents you from going any further {}\n", input));
 			}
 		}
 	}
