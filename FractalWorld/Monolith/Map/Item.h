@@ -10,7 +10,7 @@ namespace Monolith
 	{
 		public:
 			Item();
-			Item(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
+			Item(const DescriptorSettings& settings);
 			~Item();
 
 		private:

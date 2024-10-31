@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Monolith/Structs/Settings.h"
+
 #include <string>
 
 namespace Monolith
@@ -9,21 +11,18 @@ namespace Monolith
 		public:
 			static inline int idGenerator{ 0 };
 
-			MapDescriptor(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
+			MapDescriptor(const DescriptorSettings& settings);
 			virtual ~MapDescriptor() {};
 
 			const int id() const { return id_; }
-			std::string name() { return name_; }
-			std::string short_description() { return short_description_; }
-			std::string long_description() { return long_description_; }
-			bool is_plural() const { return is_plural_; }
+			std::string name() const { return settings_.name; }
+			std::string short_description() const { return settings_.short_description; }
+			std::string long_description() const { return settings_.long_description; }
+			bool is_plural() const { return settings_.is_plural; }
 
 		private:
 			const int id_;
-			std::string name_;
-			std::string short_description_;
-			std::string long_description_;
-			bool is_plural_;
+			DescriptorSettings settings_;
 	};
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MapDescriptor.h"
+#include "Monolith/Structs/Settings.h"
 
 #include <iostream>
 #include <string>
@@ -12,7 +13,7 @@ namespace Monolith
 	{
 		public:
 			MapObject();
-			MapObject(const std::string& name, const std::string& short_description, const std::string& long_description, bool is_plural);
+			MapObject(const DescriptorSettings& settings);
 			~MapObject();
 
 		private:

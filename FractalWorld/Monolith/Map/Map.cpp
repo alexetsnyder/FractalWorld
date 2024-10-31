@@ -13,7 +13,15 @@ namespace Monolith
 		{
 			for (int i = 0; i < rows; i++)
 			{
-				MapObject object{ "knife", "A glittering blade with a jeweled hilt.", "", false };
+				DescriptorSettings settings
+				{
+					"Knife",
+					"A glittering blade with a jeweled hilt",
+					"",
+					false,
+				};
+
+				MapObject object{ settings };
 				MapChunk chunk{ std::format("Coord {}:{}", i, j), "A Map Coordinate.", std::vector{ object } };
 				map_chunks_.push_back(chunk);
 			}

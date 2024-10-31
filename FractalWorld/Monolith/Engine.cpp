@@ -15,10 +15,14 @@ namespace Monolith
 		Monolith::MapItem{ "Tree", "Rough bark leads upward to thick branches; a rope hangs from a branch carrying a tire swing swinging softly in the breeze.", "", false },
 		Monolith::MapItem{ "Stars", "The vaulted heavens cold and distant.", "", true },
 	};*/
+	//"Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
+	//std::cout << "You are on a path in the woods. You are walking towards an unknown destination.\n"; 
+	//std::cout << "The hoary faces of ancient trees watch your progress: silent judges of what's to come.\n";
+	/*std::cout << map_ << "\n";
+	print_prompt();*/
 
 	Engine::Engine(bool clear_screen_flag)
-		: state_{ GameState::RUNNING }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, map_{}
-			//"Glade", "You are standing on a path in a glade. Dewy grass shinning in the starlight.", map_items }
+		: state_{ GameState::RUNNING }, clear_screen_flag_{ clear_screen_flag }, console_{}, commands_{}, map_{}	
 	{
 		commands_.insert(
 		{ 
@@ -114,10 +118,6 @@ namespace Monolith
 	{
 		clear_screen();
 		game_loop();
-		//std::cout << "You are on a path in the woods. You are walking towards an unknown destination.\n"; 
-		//std::cout << "The hoary faces of ancient trees watch your progress: silent judges of what's to come.\n";
-		/*std::cout << map_ << "\n";
-		print_prompt();*/
 	}
 
 	void Engine::load_game()

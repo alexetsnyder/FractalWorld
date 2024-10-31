@@ -149,6 +149,7 @@
     <ClInclude Include="Monolith\Map\Item.h" />
     <ClInclude Include="Monolith\Map\Map.h" />
     <ClInclude Include="Monolith\Map\MapDescriptor.h" />
+    <ClInclude Include="Monolith\Structs\Settings.h" />
     <ClInclude Include="Monolith\State.h" />
     <ClInclude Include="Monolith\System\Console.h" />
     <ClInclude Include="Monolith\Map\MapChunk.h" />
