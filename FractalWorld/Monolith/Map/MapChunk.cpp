@@ -3,13 +3,13 @@
 namespace Monolith
 {
 	MapChunk::MapChunk()
-		: name_{}, description_{}, objects_ {}
+		: name_{}, description_{}, map_objects_ {}
 	{
 
 	}
 
-	MapChunk::MapChunk(const std::string& name, const std::string& description, const std::vector<MapObject>& items)
-		: name_{ name }, description_{ description }, objects_{ items }
+	MapChunk::MapChunk(const std::string& name, const std::string& description, const std::vector<MapObject>& map_objects)
+		: name_{ name }, description_{ description }, map_objects_{ map_objects }
 	{
 		
 	}
@@ -24,7 +24,7 @@ namespace Monolith
 		os << map_chunk.description() << "\n";
 		os << "In the " << map_chunk.name() << " lies: ";
 
-		for (MapObject item : map_chunk.items())
+		for (MapObject item : map_chunk.map_objects())
 		{
 			os << item << "\n";
 

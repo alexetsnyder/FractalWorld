@@ -7,13 +7,13 @@
 namespace Monolith
 {
 	State::State()
-		: error_str_{ "" }, pmap_{ nullptr }
+		: output_str_{ "" }, error_str_{""}, pmap_{nullptr}
 	{
 
 	}
 
 	State::State(Map& map)
-		: error_str_{ "" }, pmap_{&map}
+		: output_str_{ "" }, error_str_{ "" }, pmap_{&map}
 	{
 
 	}
@@ -29,9 +29,15 @@ namespace Monolith
 
 		if (!error_str_.empty())
 		{
-			return_stream << error_str_ + "\n";
-			clear();
+			return_stream << error_str_ << "\n";
 		}
+
+		if (!output_str_.empty())
+		{
+			return_stream << output_str_ << "\n";
+		}
+
+		clear();
 
 		if (pmap_ != nullptr)
 		{
@@ -41,6 +47,11 @@ namespace Monolith
 		return return_stream.str();
 	}
 
+	void State::output(const std::string& output_str)
+	{
+		output_str_ = output_str;
+	}
+
 	void State::error(const std::string& error_str)
 	{
 		error_str_ = error_str;
@@ -48,6 +59,7 @@ namespace Monolith
 
 	void State::clear()
 	{
+		output_str_.clear();
 		error_str_.clear();
 	}
 

@@ -3,13 +3,13 @@
 namespace Monolith
 {
     MapObject::MapObject()
-        : MapDescriptor{ DescriptorSettings{} }
+        : MapDescriptor{ DescriptorSettings{} }, items_{}
     {
      
     }
 
-    MapObject::MapObject(const DescriptorSettings& settings)
-        : MapDescriptor{ settings }
+    MapObject::MapObject(const DescriptorSettings& settings, const std::vector<Item>& items)
+        : MapDescriptor{ settings }, items_{ items }
     {
 
     }

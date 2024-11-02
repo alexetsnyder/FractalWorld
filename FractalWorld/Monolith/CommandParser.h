@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Map/Map.h"
+#include "State.h"
 
 #include <string>
 
@@ -12,8 +12,9 @@ namespace Monolith
 			CommandParser();
 			~CommandParser();
 
-			bool execute(const std::string& command, Map& map);
+			bool execute(const std::string& command, State& state);
 
 		private:
+			void show_all_items(State& state);
 	};
 }

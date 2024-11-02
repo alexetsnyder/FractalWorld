@@ -1,6 +1,10 @@
 #include "CommandParser.h"
 
+#include "Map/MapChunk.h"
+
+#include <format>
 #include <map>
+#include <sstream>
 
 namespace Monolith
 {
@@ -11,6 +15,7 @@ namespace Monolith
 		MOVE_SOUTH,
 		MOVE_EAST,
 		MOVE_WEST,
+		SEARCH,
 	};
 
 	std::map<std::string, StringCode> StringParser
@@ -19,17 +24,20 @@ namespace Monolith
 		{ "south", StringCode::MOVE_SOUTH },
 		{ "east", StringCode::MOVE_EAST },
 		{ "west", StringCode::MOVE_WEST },
+		{ "search", StringCode::SEARCH },
 	};
 
 	CommandParser::CommandParser()
 	{
+
 	}
 
 	CommandParser::~CommandParser()
 	{
+
 	}
 
-	bool CommandParser::execute(const std::string& command, Map& map)
+	bool CommandParser::execute(const std::string& command, State& state)
 	{
 		StringCode code{ StringCode::NONE };
 		if (StringParser.count(command))
@@ -40,19 +48,42 @@ namespace Monolith
 		switch (code)
 		{
 			case StringCode::MOVE_NORTH:
-				return map.move_north();
+				return state.pmap()->move_north();
 
 			case StringCode::MOVE_SOUTH:
-				return map.move_south();
+				return state.pmap()->move_south();
 
 			case StringCode::MOVE_EAST:
-				return map.move_east();
+				return state.pmap()->move_east();
 
 			case StringCode::MOVE_WEST:
-				return map.move_west();
+				return state.pmap()->move_west();
+
+			case StringCode::SEARCH:
+				show_all_items(state);			
+				return true;
 
 			default:
 				return false;
 		}	
+	}
+
+	void CommandParser::show_all_items(State& state)
+	{
+		std::stringstream output_stream{};
+
+		MapChunk chunk{ state.pmap()->get_current_chunk() };
+
+		output_stream << std::format("In the {}, there are: \n", chunk.name());
+
+		for (auto& obj : chunk.map_objects())
+		{
+			for (auto& item : obj.items())
+			{
+				output_stream << item << "\n";
+			}
+		}
+
+		state.output(output_stream.str());
 	}
 }

@@ -2,6 +2,7 @@
 
 #include "MapDescriptor.h"
 
+#include <iostream>
 #include <string>
 
 namespace Monolith
@@ -15,4 +16,6 @@ namespace Monolith
 
 		private:
 	};
+
+	std::ostream& operator<<(std::ostream& os, Item item);
 }

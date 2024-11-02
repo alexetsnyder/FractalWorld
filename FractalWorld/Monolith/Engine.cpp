@@ -107,7 +107,7 @@ namespace Monolith
 				break;
 			}
 
-			if (!parser.execute(input, map_))
+			if (!parser.execute(input, state))
 			{
 				state.error(std::format("The glass dome prevents you from going any further {}\n", input));
 			}
